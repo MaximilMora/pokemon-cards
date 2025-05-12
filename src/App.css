@@ -1,0 +1,284 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 12px !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.pokemon-name {
+  font-family: sans-serif;
+  text-transform: capitalize;
+  font-weight: bold !important;
+  color: #2c3e50;
+}
+
+.MuiCardContent-root {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.MuiChip-root {
+  text-transform: capitalize;
+  transition: all 0.2s ease;
+}
+
+.MuiChip-root:hover {
+  transform: scale(1.1);
+}
+
+.MuiModal-root {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.MuiBox-root {
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translate(-50%, -60%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+.power-level {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.power-bar {
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  margin: 8px 0;
+}
+
+.power-bar-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.legendary-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  color: black;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.strength-chip {
+  background-color: #4CAF50 !important;
+  color: white !important;
+  transition: all 0.2s ease;
+}
+
+.strength-chip:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 4px rgba(76, 175, 80, 0.4);
+}
+
+.weakness-chip {
+  background-color: #F44336 !important;
+  color: white !important;
+  transition: all 0.2s ease;
+}
+
+.weakness-chip:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 4px rgba(244, 67, 54, 0.4);
+}
+
+.type-multiplier {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 4px;
+  display: block;
+}
+
+.type-multiplier.high {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.type-multiplier.low {
+  color: #F44336;
+  font-weight: bold;
+}
+
+/* Estilos para el sistema de batalla */
+.battle-container {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+}
+
+.battle-pokemon {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.battle-pokemon img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.battle-pokemon.attacking {
+  animation: attack 0.5s ease;
+}
+
+.battle-pokemon.attacking img {
+  transform: scale(1.1);
+}
+
+.battle-hp-bar {
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  margin: 10px 0;
+}
+
+.battle-hp-fill {
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.battle-log {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.battle-log-entry {
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.battle-button {
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.battle-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes attack {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(20px); }
+  50% { transform: translateX(-20px); }
+  75% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
