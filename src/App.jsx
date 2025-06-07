@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Container, Grid, Card, CardContent, Typography, TextField, Button, CardMedia, Chip, Modal, Box, CircularProgress, LinearProgress } from '@mui/material'
 import axios from 'axios'
 import Battle from './components/Battle'
+// import AudioManager from './components/AudioManager'
 import './App.css'
 
 // Sistema de tipos y sus interacciones
@@ -36,6 +37,7 @@ function App() {
   const [battleMode, setBattleMode] = useState(false)
   const [playerPokemon, setPlayerPokemon] = useState(null)
   const [opponentPokemon, setOpponentPokemon] = useState(null)
+  const [filteredPokemons, setFilteredPokemons] = useState([])
 
   useEffect(() => {
     fetchPokemons()
@@ -216,24 +218,32 @@ function App() {
     }
   }
 
-  const filteredPokemons = pokemons.filter(pokemon => 
-    pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
-  )
+  useEffect(() => {
+    const filtered = pokemons.filter(pokemon => 
+      pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredPokemons(filtered);
+  }, [searchTerm, pokemons]);
+
+  
+  
 
   if (battleMode && playerPokemon && opponentPokemon) {
     return (
       <Container>
+        {/* <AudioManager />  */}
         <Battle 
           playerPokemon={playerPokemon}
           opponentPokemon={opponentPokemon}
           onBattleEnd={handleBattleEnd}
         />
       </Container>
-    )
+    );
   }
 
   return (
     <Container>
+      {/* <AudioManager /> */}
       <Typography variant="h2" color="black" component="h1" align="center" sx={{ my: 4, fontFamily: "pokemon"}}>
         Pokémon Card Collection
       </Typography>
@@ -251,9 +261,13 @@ function App() {
         <Box display="flex" justifyContent="center" my={4}>
           <CircularProgress />
         </Box>
+      ) : filteredPokemons.length === 0 ? (
+        <Typography variant="h5" color="black" component="h2" align="center" sx={{ my: 4 }}>
+          No se encontraron Pokémon con el término "{searchTerm}"
+        </Typography>
       ) : (
         <Grid container spacing={3}>
-          {pokemons.map((pokemon) => (
+          {filteredPokemons.map((pokemon) => (
             <Grid item xs={12} sm={6} md={4} key={pokemon.id}>
               <Card className="card">
                 <CardMedia
